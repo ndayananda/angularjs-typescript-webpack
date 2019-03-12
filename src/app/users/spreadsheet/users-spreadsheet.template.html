@@ -1,0 +1,73 @@
+<div class="toolbar">
+    <h5>Users - spreadsheet view</h5>
+</div>
+<div class="users-grid data-grid">
+    <div class="toolbar">
+        <ul>
+            <li>
+                <md-menu>
+                    <md-button class="md-primary" ng-click="$mdMenu.open($event)">
+                        Show/Hide Columns
+                    </md-button>
+                    <md-menu-content width="3" class="columns-menu">
+                        <ng-repeat ng-repeat="column in $ctrl.userColumns">
+                            <md-menu-item ng-if="column.title() !== ''">
+                                <md-checkbox aria-label="Select column" ng-model="column.show"
+                                class="md-primary" ng-model-options="{ getterSetter: true }">
+                                    {{ column.title() }}
+                                </md-checkbox>
+                            </md-menu-item>
+                        </ng-repeat>
+                        <md-menu-divider></md-menu-divider>
+                        <md-menu-item>
+                            <md-button class="md-primary md-raised"
+                            ng-click="$ctrl.resetClickHandler($event)">
+                                Reset
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </li>            
+            <li>
+                <a class="add" href="" ng-click="$ctrl.addClickHandler($event)">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    <md-tooltip md-direction="top">Add User</md-tooltip>
+                </a>
+            </li>
+            <li>
+                <a class="delete" href="" ng-click="$ctrl.deleteClickHandler($event)">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    <md-tooltip md-direction="top">Delete User</md-tooltip>
+                </a>
+            </li>
+            <li>
+                <a href="" ng-click="$ctrl.filterClickHandler($event)">
+                    <i class="fa fa-filter" aria-hidden="true"></i>
+                    <md-tooltip md-direction="top">Filter User</md-tooltip>
+                </a>
+            </li>
+            <li>
+                <a href="" ng-click="$ctrl.refreshClickHandler($event)">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                    <md-tooltip md-direction="top">Refresh User</md-tooltip>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="data-table">
+        <md-checkbox aria-label="Select All Users" ng-checked="$ctrl.selectAll" ng-click="$ctrl.toggleSelectAll($event)" class="md-primary select-all"></md-checkbox>
+        <table ng-table="$ctrl.tableParams" class="table" show-filter="$ctrl.enableFilters" ng-table-columns-binding="$ctrl.usersColumns">
+            <tr ng-repeat="user in $data">
+                <td title="''">
+                    <md-checkbox aria-label="Select User" ng-click="$ctrl.toggleUserSelection($event, user)" class="md-primary" id="user-{{ user.id }}"></md-checkbox>
+                    <i class="fa fa-pencil-square-o edit" aria-hidden="true" ng-click="$ctrl.editClickHandler($event, user)">
+                            <md-tooltip md-direction="top">Edit</md-tooltip>
+                    </i>
+                </td>
+                <td title="'Name'" sortable="'name'" filter="{ name: 'text'}" ng-if="true">
+                    {{ user.name }}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

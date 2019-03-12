@@ -1,0 +1,83 @@
+@import './../../shared/sass/variables';
+
+md-dialog {
+    min-width: 100px;
+    max-width: 550px;
+}
+
+md-checkbox {
+    $size: 16px;
+
+    min-width: $size;
+    min-height: $size;
+
+    .md-container {
+        width: $size;
+        height: $size;
+    }
+
+    .md-icon {
+        width: $size;
+        height: $size;
+    }
+
+    &.md-checked {
+        .md-icon:after {
+            margin-left: -1px;
+            margin-top: -1px;
+            width: 6px;
+            height: 12px;
+        }
+    }
+}
+
+.md-scroll-mask {
+    background: $primary-color;
+    opacity: 0.2;
+}
+
+md-autocomplete {
+    background: lighten($color: $primary-color, $amount: 100%);
+    color: $text-color;
+}
+
+md-autocomplete[disabled]:not([md-floating-label]) {
+    background: lighten($color: $primary-color, $amount: 60%);
+}
+
+.md-tooltip {
+    background-color: $tooltip-bg-color !important;
+    color: lighten($primary-color, 85%) !important;
+}
+
+md-nav-bar {
+    .md-nav-bar {
+        background: lighten($primary-color, 85%);
+        border-bottom: 1px solid $primary-border-color;
+
+        .md-button {
+            &.md-active {
+                background: lighten($primary-color, 100%);
+            }
+            &.management-button {
+                position: absolute;
+                right: 0;
+                top: 1px;
+            }
+        }
+    }
+
+    md-nav-ink-bar {
+        bottom: -1px;
+    }
+}
+
+.md-button {
+    text-transform: capitalize;
+}
+
+.form-control-static {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

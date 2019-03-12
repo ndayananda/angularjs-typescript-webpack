@@ -1,0 +1,191 @@
+@import './../../sass/variables';
+
+.cp {
+    border: 1px solid $primary-border-color;
+    transition: all ease 0.4s;
+
+    &.no-border {
+        border-width: 0;
+    }
+
+    &.cp-vertical-panel {
+        width: 260px;
+        background: lighten($primary-color, 100%);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+
+        .md-panel-outer-wrapper {
+            &._md-panel-shown {
+                .loader-panel {
+                    position: absolute;
+                }
+            }
+        }
+
+        .cp-action-bar {
+            line-height: 7px;
+            padding:0 5px;
+            border-bottom: 1px solid $primary-border-color;
+            background: lighten($primary-color, 28%);
+            color: lighten($primary-color, 90%);
+
+            .fa {
+                font-size: 7px;
+            }
+        }
+
+        .cp-toolbar {
+            width: 42px;
+            background: lighten($primary-color, 100%);
+            position: absolute;
+            top: 10px;
+            bottom: 0;
+            transition: all ease 0.4s;
+            overflow: hidden;
+
+            li {
+                padding: 10px 5px;
+                border-bottom: 1px solid $primary-border-color;
+
+                a {
+                    color: $text-color;
+                    display: block;
+                    padding: 3px;
+                    font-size: 12px;
+                    border: 1px solid transparent;
+                    text-align: center;
+
+                    &:hover {
+                        background: lighten($primary-color, 85%);
+                        border-color: $primary-border-color;
+                        border-radius: 3px;
+                        text-decoration: none;
+                    }
+
+                    .fa {
+                        font-size: 15px;
+                        line-height: 15px;
+                    }
+                }
+            }
+
+            .version {
+                background: $primary-border-color;
+                text-align: center;
+                font-size: 10px;
+                font-weight: 500;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+        }
+
+        &.align-left {
+            left: 0;
+            border-width: 0 1px 1px 0;
+
+            .cp-action-bar {
+                text-align: right;
+            }
+
+            &.expand {
+                .cp-action-bar {
+                    .fa-chevron-left {
+                        display: none;
+                    }
+                }
+                .cp-content {
+                    display: none;
+                }
+            }
+
+            &.collapse {
+                .cp-action-bar {
+                    .fa-chevron-right {
+                        display: none;
+                    }
+                }
+                .cp-toolbar {
+                    width: 0;
+                }
+            }
+
+            .cp-toolbar {
+                left: 0;
+            }
+        }
+
+        &.align-right {
+            right: 0;
+            border-width: 0 0 1px 1px;
+
+            &.expand {
+                .cp-action-bar {
+                    .fa-chevron-right {
+                        display: none;
+                    }
+                }
+                .cp-content {
+                    display: none;
+                }
+            }
+
+            &.collapse {
+                .cp-action-bar {
+                    .fa-chevron-left {
+                        display: none;
+                    }
+                }
+                .cp-toolbar {
+                    width: 0;
+                }
+            }
+
+            .cp-toolbar {
+                right: 0;
+            }
+        }
+    }
+
+    &.cp-horizontal-panel {
+        .toolbar {
+            border-bottom: 0;
+            
+            .cp-toggle {
+                position: absolute;
+                right: 10px;
+                top: 14px;
+            }
+        }
+
+        .cp-content {
+            overflow-y: auto;
+            overflow-x: hidden;
+            border-top: 1px solid $primary-border-color;
+            transition: all ease 0.4s;
+        }
+
+        &.expand {
+            .fa-chevron-up {
+                display: none;
+            }
+            .cp-content {
+                opacity: 0;
+                height: 0;
+                border: 0;
+                overflow: hidden;
+            }
+        }
+
+        &.collapse {
+            .fa-chevron-down {
+                display: none;
+            }
+            .cp-content {
+                opacity: 1;
+            }
+        }
+    }
+}

@@ -1,0 +1,62 @@
+/*
+* Mixins are functions, procedures, or methods,
+* but they aren't technically any of these concepts
+* because their function is to generate code at compile time not execute code at run time.
+*
+* Reference:
+* http://thesassway.com/intermediate/leveraging-sass-mixins-for-cleaner-code
+*/
+
+// =============================================================================
+// Font Face Mixin
+// =============================================================================
+@mixin font-face($family, $src, $style: normal, $weight: normal) {
+	@font-face {
+		font-family: $family;
+		src: url('#{$src}.woff') format('woff'); // standards
+		font-style: $style;
+		font-weight: $weight;
+	}
+}
+
+// =============================================================================
+// Font Face Mixin Ends
+// =============================================================================
+
+@mixin font($font-family, $font-size, $font-weight: normal, $font-style: normal) {
+	font: $font-style $font-weight $font-size $font-family;
+}
+
+/// Mixin to customize scrollbars
+/// Beware, this does not work in all browsers
+/// @author Hugo Giraudel
+/// @param {Length} $size - Horizontal scrollbar's height and vertical scrollbar's width
+/// @param {Color} $foreground-color - Scrollbar's color
+/// @param {Color} $background-color [mix($primary, white, 75%)] - Scrollbar's color
+/// @example scss - Scrollbar styling
+///   @include scrollbars(.5em, slategray);
+@mixin scrollbars($size, $foreground-color, $background-color, $foreground-hover-color: $foreground-color) {
+	::-webkit-scrollbar {
+		width: $size;
+		height: $size;
+	}
+	::-webkit-scrollbar-thumb {
+		border-radius: 5px;
+		background: $foreground-color;
+		border: 1px solid lighten($color: $primary-color, $amount: 100%);
+		&:hover {
+			background: $foreground-hover-color;
+		}
+	}
+	::-webkit-scrollbar-track {
+		border-radius: 5px;
+		background: $background-color;
+		border: 1px solid lighten($color: $primary-color, $amount: 100%);
+	}
+
+	// For Internet Explorer
+	body {
+		scrollbar-face-color: $foreground-color;
+		scrollbar-track-color: $background-color;
+	}
+}

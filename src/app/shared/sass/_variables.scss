@@ -1,0 +1,30 @@
+/*
+* Declare all the globale reusable variables here. If the variable is not reusable then declare it on top of the same file.
+* No other styles should be here other than variables.
+* Alwasys follow one standard for declaring variable Ex: some-varaible, this-is-a-variable
+* The whole application will use 4 to 5 base color
+* rest of the colors used will be lighter/darker version of the base color
+* This way it is easy to change the theme of the application by just changes the base variables
+*
+* Example:
+* Color: #333 can be achived using $primary-color like this, lighten($primary-color, 20%)
+* Color: #4d4d4d can be achived using $primary-color like this, lighten($primary-color, 85%)
+* Color: #e5e5e5 can be achived using $primary-color like this, lighten($primary-color, 90%)
+*/
+
+// =============================================================================
+// Color Variables
+// =============================================================================
+$white: #fff !default;
+$primary-color: #000 !default;
+$primary-border-color: lighten($primary-color, 10%) !default;
+$primary-link-color: #026fe9 !default;
+$tooltip-bg-color: $primary-link-color !default;
+$text-color: $white;
+
+// =============================================================================
+// Font Variables
+// =============================================================================
+$fa-font-path: "~font-awesome/fonts"; // This is Font Awesome file path
+$font-name: 'Open Sans', sans-serif !default;
+$base-font-weight: 400 !default;

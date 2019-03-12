@@ -1,0 +1,23 @@
+<section class="view-pane">        
+    <div class="content-pane">
+        <md-nav-bar md-selected-nav-item="$ctrl.currentNavItem" nav-bar-aria-label="navigation links">
+            <md-nav-item name="{{ $ctrl.navSref.spreadsheet }}" md-nav-sref="{{ $ctrl.navSref.spreadsheet }}">
+                Spreadsheet View
+            </md-nav-item>
+            <md-nav-item name="{{ $ctrl.navSref.graphic }}" md-nav-sref="{{ $ctrl.navSref.graphic }}">
+                Graphical View
+            </md-nav-item>
+            <md-nav-item name="{{ $ctrl.navSref.geomap }}" md-nav-sref="{{ $ctrl.navSref.geomap }}">
+                Geo Map View
+            </md-nav-item>
+        </md-nav-bar>
+        <div ui-view="usersSpreadsheet" ng-class="{ active: $ctrl.$state.includes('users.spreadsheet') }" class="angular-animate state-view"></div>
+    </div>
+    <div class="right-pane">
+        <collapsible-panel vertical="true" uuid="{{ $ctrl.rightPanelUuid }}" collapsed="$ctrl.rightPanelCollapsed" panel-width="{{ $ctrl.rightPanelMaxWidth }}">
+            <cp-content>
+                <div ui-view="userDetails" ng-class="{ active: $ctrl.$state.is('users.spreadsheet.userDetails') }" class="angular-animate details-pane"></div>
+            </cp-content>
+        </collapsible-panel>
+    </div>
+</section>

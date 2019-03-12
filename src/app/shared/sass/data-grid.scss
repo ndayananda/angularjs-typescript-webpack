@@ -1,0 +1,258 @@
+@import './variables.scss';
+@import './../../shared/sass/mixins';
+
+.data-grid {
+    .toolbar {
+        padding: 10px 15px;
+        background: lighten($primary-color, 85%);
+
+        h6 {
+            float: left;
+        }
+
+        ul {
+            float: right;
+
+            li {
+                float: left;
+                margin: 0 0 0 16px;
+
+                a {
+                    display: inline-block;
+                    color: $text-color;
+                    font-size: 16px;
+
+                    &:hover:not([disabled]) {
+                        color: $primary-link-color;
+                    }
+                }
+            }
+        }
+
+        .md-button {
+            font-size: 12px;
+            margin: 0;
+            min-height: 24px;
+            line-height: 24px;
+
+            &.md-primary{
+                &:hover:not([disabled]) {
+                    color: lighten($color: $primary-color, $amount: 100%);
+                }
+            }
+        }
+    }
+
+    .data-table {
+        overflow: hidden;
+        overflow-x: auto;
+        overflow-y: auto;
+        position: relative;
+        min-height: 250px;
+        max-height: 250px;
+
+        md-checkbox {
+            margin: 0;
+
+            &.select-all {
+                position: absolute;
+                top: 9px;
+                left: 8px;
+                margin: 0;
+            }
+        }
+
+        .md-button {
+            margin: 0;
+            font-size: 12px;
+            line-height: 24px;
+            min-width: 0%;
+            min-height: 0%;
+        }
+    }
+
+    .table {
+        > thead {
+            tr {
+                background: lighten($primary-color, 100%);
+
+                > th {
+                    border-bottom: 1px solid $primary-border-color;
+                    font-weight: 500;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+
+                    &.sortable {
+                        cursor: pointer;
+
+                        .sort-indicator {
+                            padding-right: 18px;
+                            position: relative;
+
+                            &:after, &:before {
+                                content: "";
+                                border-width: 0 4px 4px;
+                                border-style: solid;
+                                border-color: darken($white, 67%) transparent;
+                                visibility: visible;
+                                right: 5px;
+                                top: 50%;
+                                position: absolute;
+                                opacity: .3;
+                                margin-top: -4px;
+                            }
+                            &:before {
+                                margin-top: 2px;
+                                border-bottom: none;
+                                border-left: 4px solid transparent;
+                                border-right: 4px solid transparent;
+                                border-top: 4px solid darken($white, 67%);
+                            }
+                        }
+
+                        .sort-indicator:hover:after, .sort-indicator:hover:before {
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                        &.sort-desc, &.sort-asc {
+                            background-color: lighten($primary-color, 85%);
+
+                            .sort-indicator:after {
+                                margin-top: -2px;
+                            }
+                            .sort-indicator:before {
+                                visibility: hidden;
+                            }
+                        }
+                        &.sort-asc .sort-indicator:after, &.sort-asc .sort-indicator:hover:after {
+                            visibility: visible;
+                            opacity: 0.6;
+                        }
+                        &.sort-desc .sort-indicator:after {
+                            border-bottom: none;
+                            border-left: 4px solid transparent;
+                            border-right: 4px solid transparent;
+                            border-top: 4px solid darken($white, 67%);
+                            visibility: visible;
+                            box-shadow: none;
+                            opacity: 0.6;
+                        }
+                    }
+                }
+                &.ng-table-filters {
+                    .input-filter {
+                        color: $text-color;
+                        background: lighten($color: $primary-color, $amount: 100%);
+                        border-color: $primary-border-color;
+                        border-radius: 0;
+                        height: 28px;
+                    }
+                }
+            }
+        }
+
+        > tbody {
+            > tr {
+                background: lighten($primary-color, 85%);
+
+                > td {
+                    border-top: 1px solid $primary-border-color;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                &:first-child {
+                    > td {
+                        border: 0;
+                    }
+                }
+
+                &:hover, &.highlight {
+                    background: $primary-link-color;
+                    color: lighten($color: $primary-color, $amount: 100%)
+                }
+            }
+        }
+
+        md-checkbox {
+            margin: 0;
+        }
+
+        .fa-pencil-square-o {
+            font-size: 18px;
+            vertical-align: middle;
+            cursor: pointer;
+            position: relative;
+            width: 18px;
+
+            &:hover {
+                color: lighten($color: $primary-color, $amount: 100%);
+            }
+            &:before {
+                position: absolute;
+                left: -2px;
+                top: -8px;
+            }
+        }
+    }
+
+    .pagination  {
+        margin: 0 15px;
+
+        > li {
+            > a {
+                background: lighten($primary-color, 85%);
+                border-color: $primary-border-color;
+                color: $text-color;
+                font-weight: 400;
+
+                &:hover {
+                    background: $primary-link-color;
+                    border-color: $primary-link-color;
+                }
+            }
+        }
+
+        > .active {
+            > a {
+                background: lighten($primary-color, 67%);
+
+                &:hover {
+                    background: lighten($primary-color, 67%);
+                    border-color: $primary-border-color;
+                }
+            }
+        }
+
+        > .disabled {
+            > a {
+                opacity: 0.5;
+
+                &:hover {
+                    background: lighten($primary-color, 85%);
+                    border-color: $primary-border-color;
+                }
+            }
+        }
+    }
+}
+
+.columns-menu {
+    md-menu-item {
+        padding: 0 15px;
+
+        md-checkbox .md-label {
+            margin: 0 0 0 15px;
+        }
+
+        .md-button{
+            height: 24px;
+            line-height: 24px;
+            width: 25%;
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
+}

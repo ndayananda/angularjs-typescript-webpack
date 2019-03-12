@@ -1,0 +1,167 @@
+/*
+* Re-usable styles should be here
+* A common CSS used across the application should be here
+*/
+
+@import './../../shared/sass/variables';
+@import './../../shared/sass/mixins';
+@import './../../shared/sass/spinner';
+@import '~angular-material/modules/scss/angular-material.scss';
+
+@include scrollbars(10px, lighten($primary-color, 55%), lighten($primary-color, 75%), $primary-link-color);
+
+html, body {
+    height: 100%;
+    font-size: 16px;
+}
+
+body {
+    font-weight: $base-font-weight;
+    color: $text-color;
+    background: $primary-border-color;
+}
+
+*:focus {
+    outline: none;
+}
+
+%default-list-style {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul {
+    @extend %default-list-style;
+    li {
+        @extend %default-list-style;
+    }
+}
+
+h5 {
+    font-weight: 700;
+}
+
+.main-layout {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+
+    header {
+        display: flex;
+        padding: 20px;
+        background: lighten($color: $primary-color, $amount: 40%);
+        justify-content: space-between;
+        align-items: center;
+
+        h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: $white;
+            margin: 0;
+        }
+
+        .logged-in-user {
+            .user-name {
+                font-size: 1rem;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .main-content-wrapper {
+        display: flex;
+        flex-flow: row;
+        flex: 1 100%;
+        border-top: 1px solid $primary-border-color;
+
+        aside {
+            width: 60px;
+            background: lighten($color: $primary-color, $amount: 40%);
+            position: relative;
+            padding-right: 4px;
+
+            &:after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                border-left: 1px solid $primary-border-color;
+                border-right: 1px solid $primary-border-color;
+                background: lighten($color: $primary-color, $amount: 40%);
+            }
+
+            ul {
+                display: flex;
+                flex-flow: column;
+
+                li {
+                    padding: 10px 0;
+                    text-align: center;
+                    border-bottom: 1px solid $primary-border-color;
+
+                    a {
+                        display: inline-block;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .main-content-container {
+            flex: 1 100%;
+
+            .view-pane {
+                display: flex;
+                height: 100%;
+
+                .content-pane {
+                    flex: 1 0 0;
+                }
+            }
+        }
+    }
+}
+
+.state-view {
+    position: absolute;
+    width: 100%;
+    &.ng-enter {
+        transition: .3s linear all;
+        left: 100%;
+        &.ng-enter-active {
+            left: 0;
+        }
+    }
+    &.ng-leave {
+        transition: .3s linear all;
+        left: 0;
+        &.ng-leave-active {
+            left: -100%;
+        }
+    }
+}
+
+.mask {
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba($color: $primary-color, $alpha: 0.5);
+        z-index: 101;
+    }
+    &:after {
+        content: 'Loading...';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 102;
+        color: lighten($color: $primary-color, $amount: 100%);
+        margin: -5px 0 0 -25px;
+    }
+}

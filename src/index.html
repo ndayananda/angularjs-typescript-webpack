@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Angularjs Typescript Webpack Single Page Application</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <base href="/">
+        <style type="text/css">
+            /**
+             * This helps the ng-show/ng-hide animations start at the right place.
+             * Since Angular has this but needs to load, this gives us the class early.
+             */
+            .ng-hide {
+                display: none!important;
+            }
+
+            /**
+             * The below CSS needed to show loader untill the application files load
+             * Floating Points Loader
+             */
+            .fp-loader {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                overflow: hidden;
+            }
+            .fp-loader:before {
+                content: 'Loading...';
+                color: #1c1c1c;
+                position: absolute;
+                left: calc(100%/2 - 30px);
+                top: calc(100% / 2 - 35px);
+                font-size: 14px;
+                font-weight: 500;
+            }
+            .fp-spinner {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 50%;
+                margin-top: -10px;
+            }
+            .fp-spinner div {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                left: -20px;
+                background-color: #0b6daf;
+                border-radius: 50%;
+                animation: move 4s infinite cubic-bezier(.2,.64,.81,.23);
+            }
+            .fp-spinner div:nth-child(2) {
+                animation-delay: 150ms;
+            }
+            .fp-spinner div:nth-child(3) {
+                animation-delay: 300ms;
+            }
+            .fp-spinner div:nth-child(4) {
+                animation-delay: 450ms;
+            }
+            @keyframes move {
+                0% {left: 0%;}
+                75% {left:100%;}
+                100% {left:100%;}
+            }
+        </style>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <% for (var css in htmlWebpackPlugin.files.css) { %>
+            <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css[css] %>">
+        <% } %>
+    </head>
+    <body ng-csp>
+        <ui-view></ui-view>
+        <!-- Below line is a fix for weird problem with the md-input-container
+        Refer: https://github.com/angular/material/issues/5318 -->
+        <md-input-container style="display: none;" aria-label=""><input ng-model="xxxxxxxxx" aria-label=""></md-input-container>
+        <!-- This loader will be displayed on screen untill angular is resolved -->
+        <div class="fp-loader" data-ng-show="false">
+            <div class="fp-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+        <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+            <% if (chunk === 'babel-polyfill') { %>
+                <script type="text/javascript">
+                    (function() {
+                        if(document.documentMode) {
+                            var script = document.createElement('script');
+                            script.type = 'text/javascript';
+                            script.async = false;
+                            script.src = '<%= htmlWebpackPlugin.files.chunks[chunk].entry %>';
+                            document.body.appendChild(script);
+                        }
+                    })();
+                </script>
+            <% } else { %>
+                <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+            <% } %>
+        <% } %>
+    </body>
+</html>

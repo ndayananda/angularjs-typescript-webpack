@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test component should render default dom 1`] = `
+<collapsible-panel
+  class="ng-scope ng-isolate-scope"
+>
+  <div
+    class="cp  cp-horizontal-panel collapse align-right"
+    ng-class="{
+        'cp-vertical-panel': $ctrl.isVerticalPanel(),
+        'cp-horizontal-panel': !$ctrl.isVerticalPanel(),
+        'expand': $ctrl.isCollapsed(),
+        'collapse': !$ctrl.isCollapsed(),
+        'align-left': $ctrl.isAlginLeft(),
+        'align-right': !$ctrl.isAlginLeft()
+    }"
+    ng-style="{'width': $ctrl.getPanelWidth()}"
+  >
+    
+    
+    <!-- ngIf: $ctrl.isVerticalPanel() -->
+    
+    
+    <!-- ngIf: $ctrl.isVerticalPanel() -->
+    
+    
+    <!-- ngIf: !$ctrl.isVerticalPanel() -->
+    <div
+      class="cp-title ng-scope"
+      ng-if="!$ctrl.isVerticalPanel()"
+    >
+      
+        
+      <div
+        class="toolbar"
+      >
+        
+            
+        <div
+          ng-transclude="title"
+        />
+        
+            
+        <span
+          class="cp-toggle"
+          ng-click="$ctrl.toggle($event)"
+          role="button"
+          tabindex="0"
+        >
+          
+                
+          <i
+            aria-hidden="true"
+            class="fa fa-chevron-down"
+          />
+          
+                
+          <i
+            aria-hidden="true"
+            class="fa fa-chevron-up"
+          />
+          
+            
+        </span>
+        
+        
+      </div>
+      
+    
+    </div>
+    <!-- end ngIf: !$ctrl.isVerticalPanel() -->
+    
+    
+    <div
+      class="cp-content"
+    >
+      
+        
+      <div
+        ng-transclude="content"
+      />
+      
+    
+    </div>
+    
+
+  </div>
+</collapsible-panel>
+`;

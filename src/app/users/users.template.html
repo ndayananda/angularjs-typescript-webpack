@@ -14,7 +14,7 @@
         <div ui-view="usersSpreadsheet" ng-class="{ active: $ctrl.$state.includes('users.spreadsheet') }" class="angular-animate state-view"></div>
     </div>
     <div class="right-pane">
-        <collapsible-panel vertical="true" uuid="{{ $ctrl.rightPanelUuid }}" collapsed="$ctrl.rightPanelCollapsed" panel-width="{{ $ctrl.rightPanelMaxWidth }}">
+        <collapsible-panel vertical="true" collapsed="true" align="right">
             <cp-content>
                 <div ui-view="userDetails" ng-class="{ active: $ctrl.$state.is('users.spreadsheet.userDetails') }" class="angular-animate details-pane"></div>
             </cp-content>

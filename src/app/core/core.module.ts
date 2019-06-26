@@ -7,6 +7,7 @@ import * as ngSanitize from 'angular-sanitize';
 import * as ngAria from 'angular-aria';
 import { ngTableModule } from 'ng-table';
 import 'ng-table/bundles/ng-table';
+import 'ng-table/bundles/ng-table.min.css';
 
 import { appConstants } from './constants';
 import { customEvents } from './custom-events.constants';

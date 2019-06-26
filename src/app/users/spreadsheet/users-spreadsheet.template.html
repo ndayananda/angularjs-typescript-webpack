@@ -36,7 +36,7 @@
             </li>
             <li>
                 <a class="delete" href="" ng-click="$ctrl.deleteClickHandler($event)">
-                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    <i class="fa fa-trash-alt" aria-hidden="true"></i>
                     <md-tooltip md-direction="top">Delete User</md-tooltip>
                 </a>
             </li>
@@ -48,7 +48,7 @@
             </li>
             <li>
                 <a href="" ng-click="$ctrl.refreshClickHandler($event)">
-                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                    <i class="fa fa-sync-alt" aria-hidden="true"></i>
                     <md-tooltip md-direction="top">Refresh User</md-tooltip>
                 </a>
             </li>
@@ -56,12 +56,12 @@
     </div>
     <div class="data-table">
         <md-checkbox aria-label="Select All Users" ng-checked="$ctrl.selectAll" ng-click="$ctrl.toggleSelectAll($event)" class="md-primary select-all"></md-checkbox>
-        <table ng-table="$ctrl.tableParams" class="table" show-filter="$ctrl.enableFilters" ng-table-columns-binding="$ctrl.usersColumns">
+        <table ng-table="$ctrl.tableParams" class="table s12" show-filter="$ctrl.enableFilters" ng-table-columns-binding="$ctrl.usersColumns">
             <tr ng-repeat="user in $data">
                 <td title="''">
                     <md-checkbox aria-label="Select User" ng-click="$ctrl.toggleUserSelection($event, user)" class="md-primary" id="user-{{ user.id }}"></md-checkbox>
-                    <i class="fa fa-pencil-square-o edit" aria-hidden="true" ng-click="$ctrl.editClickHandler($event, user)">
-                            <md-tooltip md-direction="top">Edit</md-tooltip>
+                    <i class="far fa-edit edit" aria-hidden="true" ng-click="$ctrl.editClickHandler($event, user)">
+                        <md-tooltip md-direction="top">Edit</md-tooltip>
                     </i>
                 </td>
                 <td title="'Name'" sortable="'name'" filter="{ name: 'text'}" ng-if="true">

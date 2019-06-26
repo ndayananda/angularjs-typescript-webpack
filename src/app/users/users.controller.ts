@@ -23,12 +23,13 @@ export class UsersController {
 
     constructor(
         private $scope: IScope,
-        private $state: StateService,
+        private $state: StateService
     ) {
         'ngInject';
-        this.navSref = this.navSref['spreadsheet'];
         this.currentNavItem = this.navSref['spreadsheet'];
     }
 
-    $onInit() {}
+    $onInit() {
+        
+    }
 }

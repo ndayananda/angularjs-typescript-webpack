@@ -43,7 +43,7 @@
 	::-webkit-scrollbar-thumb {
 		border-radius: 5px;
 		background: $foreground-color;
-		border: 1px solid lighten($color: $primary-color, $amount: 100%);
+		border: 1px solid lighten($color: $primary-color, $amount: 5%);
 		&:hover {
 			background: $foreground-hover-color;
 		}
@@ -51,7 +51,7 @@
 	::-webkit-scrollbar-track {
 		border-radius: 5px;
 		background: $background-color;
-		border: 1px solid lighten($color: $primary-color, $amount: 100%);
+		border: 1px solid lighten($color: $primary-color, $amount: 5%);
 	}
 
 	// For Internet Explorer

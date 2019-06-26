@@ -48,8 +48,13 @@ export class UsersSpreadsheetController {
     private getUsers() {
         let fetchUsers = this.usersService.getUsers();
 
-        fetchUsers.then((data: Array<Object>) => {
-            this.users = data;
+        fetchUsers.then((response: object) => {
+            if(response['status'] === 200) {
+                this.users = response['data'];
+                this.tableParams.settings({
+                    dataset: this.users
+                });
+            }            
         },
         (err: object) => {            
             console.error(err);

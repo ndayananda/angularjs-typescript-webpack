@@ -52,12 +52,22 @@ md-autocomplete[disabled]:not([md-floating-label]) {
 
 md-nav-bar {
     .md-nav-bar {
-        background: lighten($primary-color, 85%);
+        background: lighten($primary-color, 20%);
         border-bottom: 1px solid $primary-border-color;
 
         .md-button {
+            color: $white !important;
             &.md-active {
-                background: lighten($primary-color, 100%);
+                background: lighten($primary-color, 40%);
+                &:after {
+                    content: '';
+                    position: absolute;
+                    height: 2px;
+                    background: $white;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                }
             }
             &.management-button {
                 position: absolute;
@@ -68,12 +78,16 @@ md-nav-bar {
     }
 
     md-nav-ink-bar {
-        bottom: -1px;
+        display: none;
     }
 }
 
 .md-button {
     text-transform: capitalize;
+
+    &.md-primary {
+        color: $white;
+    }
 }
 
 .form-control-static {

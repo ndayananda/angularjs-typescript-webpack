@@ -8,7 +8,7 @@
 @import './../../shared/sass/spinner';
 @import '~angular-material/modules/scss/angular-material.scss';
 
-@include scrollbars(10px, lighten($primary-color, 55%), lighten($primary-color, 75%), $primary-link-color);
+@include scrollbars(8px, lighten($primary-color, 30%), lighten($primary-color, 20%), lighten($primary-color, 40%));
 
 html, body {
     height: 100%;
@@ -69,6 +69,17 @@ h5 {
         }
     }
 
+    .toolbar {
+        background: lighten($primary-color, 40%);
+        border-bottom: 1px solid $primary-border-color;
+        padding: 5px 10px;
+        position: relative;
+
+        h1, h2, h3, h4, h5, h6 {
+            text-transform: capitalize;
+        }
+    }
+
     .main-content-wrapper {
         display: flex;
         flex-flow: row;
@@ -118,7 +129,13 @@ h5 {
                 height: 100%;
 
                 .content-pane {
-                    flex: 1 0 0;
+                    flex: 1 100%;
+                    position: relative;
+                    overflow: auto;
+                }
+
+                .right-pane {
+                    position: relative;
                 }
             }
         }

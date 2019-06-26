@@ -4,17 +4,16 @@
 .data-grid {
     .toolbar {
         padding: 10px 15px;
-        background: lighten($primary-color, 85%);
-
-        h6 {
-            float: left;
-        }
+        background: lighten($primary-color, 40%);
+        display: flex;
+        justify-content: space-between;
 
         ul {
-            float: right;
+            display: flex;
+            flex: auto;
+            justify-content: flex-end;
 
             li {
-                float: left;
                 margin: 0 0 0 16px;
 
                 a {
@@ -35,7 +34,7 @@
             min-height: 24px;
             line-height: 24px;
 
-            &.md-primary{
+            &.md-primary {
                 &:hover:not([disabled]) {
                     color: lighten($color: $primary-color, $amount: 100%);
                 }
@@ -72,16 +71,17 @@
     }
 
     .table {
-        > thead {
+        >thead {
             tr {
-                background: lighten($primary-color, 100%);
+                background: lighten($primary-color, 40%);
 
-                > th {
+                >th {
                     border-bottom: 1px solid $primary-border-color;
                     font-weight: 500;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
+                    text-align: left;
 
                     &.sortable {
                         cursor: pointer;
@@ -90,11 +90,12 @@
                             padding-right: 18px;
                             position: relative;
 
-                            &:after, &:before {
+                            &:after,
+                            &:before {
                                 content: "";
                                 border-width: 0 4px 4px;
                                 border-style: solid;
-                                border-color: darken($white, 67%) transparent;
+                                border-color: $primary-border-color transparent;
                                 visibility: visible;
                                 right: 5px;
                                 top: 50%;
@@ -102,33 +103,41 @@
                                 opacity: .3;
                                 margin-top: -4px;
                             }
+
                             &:before {
                                 margin-top: 2px;
                                 border-bottom: none;
                                 border-left: 4px solid transparent;
                                 border-right: 4px solid transparent;
-                                border-top: 4px solid darken($white, 67%);
+                                border-top: 4px solid darken($primary-color, 67%);
                             }
                         }
 
-                        .sort-indicator:hover:after, .sort-indicator:hover:before {
+                        .sort-indicator:hover:after,
+                        .sort-indicator:hover:before {
                             opacity: 1;
                             visibility: visible;
                         }
-                        &.sort-desc, &.sort-asc {
+
+                        &.sort-desc,
+                        &.sort-asc {
                             background-color: lighten($primary-color, 85%);
 
                             .sort-indicator:after {
                                 margin-top: -2px;
                             }
+
                             .sort-indicator:before {
                                 visibility: hidden;
                             }
                         }
-                        &.sort-asc .sort-indicator:after, &.sort-asc .sort-indicator:hover:after {
+
+                        &.sort-asc .sort-indicator:after,
+                        &.sort-asc .sort-indicator:hover:after {
                             visibility: visible;
                             opacity: 0.6;
                         }
+
                         &.sort-desc .sort-indicator:after {
                             border-bottom: none;
                             border-left: 4px solid transparent;
@@ -140,6 +149,7 @@
                         }
                     }
                 }
+
                 &.ng-table-filters {
                     .input-filter {
                         color: $text-color;
@@ -154,7 +164,7 @@
 
         > tbody {
             > tr {
-                background: lighten($primary-color, 85%);
+                background: lighten($color: $primary-color, $amount: 20%);
 
                 > td {
                     border-top: 1px solid $primary-border-color;
@@ -164,14 +174,14 @@
                 }
 
                 &:first-child {
-                    > td {
+                    >td {
                         border: 0;
                     }
                 }
 
-                &:hover, &.highlight {
-                    background: $primary-link-color;
-                    color: lighten($color: $primary-color, $amount: 100%)
+                &:hover,
+                &.highlight {
+                    background: lighten($color: $primary-color, $amount: 25%);
                 }
             }
         }
@@ -180,16 +190,13 @@
             margin: 0;
         }
 
-        .fa-pencil-square-o {
-            font-size: 18px;
-            vertical-align: middle;
+        .far-edit {
             cursor: pointer;
-            position: relative;
-            width: 18px;
 
             &:hover {
-                color: lighten($color: $primary-color, $amount: 100%);
+                color: lighten($color: $primary-color, $amount: 25%);
             }
+
             &:before {
                 position: absolute;
                 left: -2px;
@@ -198,11 +205,11 @@
         }
     }
 
-    .pagination  {
+    .pagination {
         margin: 0 15px;
 
-        > li {
-            > a {
+        >li {
+            >a {
                 background: lighten($primary-color, 85%);
                 border-color: $primary-border-color;
                 color: $text-color;
@@ -215,8 +222,8 @@
             }
         }
 
-        > .active {
-            > a {
+        >.active {
+            >a {
                 background: lighten($primary-color, 67%);
 
                 &:hover {
@@ -226,8 +233,8 @@
             }
         }
 
-        > .disabled {
-            > a {
+        >.disabled {
+            >a {
                 opacity: 0.5;
 
                 &:hover {
@@ -247,12 +254,59 @@
             margin: 0 0 0 15px;
         }
 
-        .md-button{
+        .md-button {
             height: 24px;
             line-height: 24px;
             width: 25%;
             text-align: center;
             margin: 0 auto;
         }
+    }
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    // Cells
+    >thead,
+    >tbody,
+    >tfoot {
+        >tr {
+            >th,
+            >td {
+                padding: 8px;
+                line-height: 1.42857;
+                vertical-align: top;
+                border-top: 1px solid $primary-border-color;
+            }
+        }
+    }
+
+    // Bottom align for column headings
+    >thead>tr>th {
+        vertical-align: bottom;
+        border-bottom: 2px solid $primary-border-color;
+    }
+
+    // Remove top border from thead by default
+    >caption+thead,
+    >colgroup+thead,
+    >thead:first-child {
+        >tr:first-child {
+
+            >th,
+            >td {
+                border-top: 0;
+            }
+        }
+    }
+
+    // Account for multiple tbody instances
+    >tbody+tbody {
+        border-top: 2px solid $primary-border-color;
     }
 }

@@ -93,7 +93,7 @@
         "typescript-babel-jest": "^1.0.5",
         "webpack": "^3.8.1",
         "webpack-auto-inject-version": "^1.0.0",
-        "webpack-bundle-analyzer": "^2.9.1",
+        "webpack-bundle-analyzer": "^3.6.0",
         "webpack-dev-server": "^2.9.3",
         "webpack-manifest-plugin": "^2.0.0-rc.2",
         "webpack-war-plugin": "^1.0.0-beta.3"
